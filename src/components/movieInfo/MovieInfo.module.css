@@ -1,0 +1,11 @@
+.movieInfoWrap {
+    display: flex;
+}
+
+.movieInfoPoster {
+    margin: 5px;
+}
+
+.movieInfo {
+    margin: 5px;
+}

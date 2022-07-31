@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    background: blue;
+}
+
+.menu {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+
+
+    background: silver;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+
+
+    width: 90%;
+    height: 100%;
+    background: red;
+}
+
+.genres {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: yellow;
+}
+
+.mostPopular {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background: aqua;
+}
+
+.movie {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: green;
+}
+
+.headerWrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: grey;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    width: 80%;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    width: 20%;
+    border-left: 1px solid black;
+}

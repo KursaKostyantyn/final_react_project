@@ -1,0 +1,29 @@
+.userInfoWrap {
+    display: flex;
+    width: 100%;
+}
+
+.circleWrap {
+    width: 20%;
+    margin: 5px;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.name {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    width: 80%;
+}
+
