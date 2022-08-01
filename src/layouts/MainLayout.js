@@ -1,6 +1,6 @@
 import {Outlet} from "react-router-dom";
 
-import {Header, UserInfo} from "../components";
+import {Genres, Header, Menu, UserInfo} from "../components";
 import css from './MainLayout.module.css'
 
 const MainLayout = () => {
@@ -12,14 +12,14 @@ const MainLayout = () => {
             </div>
             <div className={css.container}>
                 <div className={css.menu}>
-                    Menu
+                    <div><Menu/></div>
+                    <div><Genres/></div>
                 </div>
                 <div className={css.wrap}>
                     <div className={css.genres}>
                         all genres
                     </div>
                     <div className={css.mostPopular}>
-                        most popular
                         <Outlet/>
                     </div>
                     <div className={css.movie}>

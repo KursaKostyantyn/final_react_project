@@ -2,6 +2,7 @@ import {useSelector} from "react-redux";
 
 import css from './MovieInfo.module.css'
 import {PosterPreview} from "../posterPreview";
+import {StarRating} from "../starRating";
 
 const MovieInfo = () => {
     const {movies, currentMovieId} = useSelector(state => state.movies);
@@ -40,6 +41,7 @@ const MovieInfo = () => {
                 <div>video: {video.toString()}</div>
                 <div>vote_average: {vote_average}</div>
                 <div>vote_count: {vote_count}</div>
+                <div><StarRating/></div>
             </div>
         </div>
     )
