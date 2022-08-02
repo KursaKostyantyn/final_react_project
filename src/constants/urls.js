@@ -4,7 +4,8 @@ const urlForPoster = 'https://image.tmdb.org/t/p/w500'
 
 const urls = {
     movie: '/discover/movie',
-    genres:'/genre/movie/list'
+    genres:'/genre/movie/list',
+    searchByName: '/search/movie?query='
 }
 
 export {

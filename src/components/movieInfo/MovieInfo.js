@@ -1,12 +1,11 @@
 import {useSelector} from "react-redux";
 
 import css from './MovieInfo.module.css'
-import {PosterPreview} from "../posterPreview";
-import {StarRating} from "../starRating";
+import {Genre, PosterPreview, StarRating} from "../index";
+
 
 const MovieInfo = () => {
-    const {movies, currentMovieId} = useSelector(state => state.movies);
-
+    const {movies, currentMovieId, genresNames} = useSelector(state => state.movies);
     const movie = movies.find(movie => movie.id === currentMovieId)
 
     const {
@@ -22,9 +21,10 @@ const MovieInfo = () => {
         video,
         vote_average,
         vote_count
+
     } = movie
 
-
+    console.log(genresNames)
     return (
         <div className={css.movieInfoWrap}>
             <div className={css.movieInfoPoster}>
@@ -34,6 +34,14 @@ const MovieInfo = () => {
                 <div>adult: {adult.toString()}</div>
                 <div>original_language: {original_language}</div>
                 <div>original_title: {original_title}</div>
+                <h6>
+                    <div className={css.movieInfoGenre}> Genres:
+                        {genresNames.map(genre => <Genre key={genre.id} name={genre.name} id={genre.id}
+                                                         someInfo={genre.id} badgeStatus={false}/>)}
+                    </div>
+                </h6>
+
+
                 <div>overview: {overview}</div>
                 <div>popularity: {popularity}</div>
                 <div>release_date: {release_date}</div>
@@ -41,7 +49,7 @@ const MovieInfo = () => {
                 <div>video: {video.toString()}</div>
                 <div>vote_average: {vote_average}</div>
                 <div>vote_count: {vote_count}</div>
-                <div><StarRating/></div>
+                <div><StarRating vote_average={vote_average}/></div>
             </div>
         </div>
     )

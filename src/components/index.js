@@ -8,3 +8,6 @@ export * from './menu';
 export * from './genres';
 export * from './genre';
 export * from './starRating';
+export * from './genreBadge';
+export * from './searchForm';
+

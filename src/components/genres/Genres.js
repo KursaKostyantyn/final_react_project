@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {genreActions} from "../../redux/slices/genre.slice";
+
+import {genreActions} from "../../redux";
 import {Genre} from "../genre";
 
 const Genres = () => {
@@ -15,7 +16,8 @@ const Genres = () => {
     return (
         <div>
             Genres:
-            {genres.map((genre => <Genre key={genre.id} name={genre.name}/>))}
+            <hr/>
+            {genres.map((genre => <Genre key={genre.id} someInfo={genre.id} name={genre.name} id={genre.id} badgeStatus={true}/>))}
         </div>
     )
 }

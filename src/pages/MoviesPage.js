@@ -1,6 +1,6 @@
 import {MoviesList} from "../components";
 
-const MoviesPage=()=>{
+const MoviesPage = () => {
     return (
         <div>
             <MoviesList/>

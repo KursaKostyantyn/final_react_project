@@ -6,7 +6,10 @@ const initialState = {
     movies: [],
     errors: null,
     currentMovieId: null,
-    totalPages: null
+    totalPages: null,
+    searchName: null,
+    genreId: null,
+    genresNames: null
 }
 
 const getAll = createAsyncThunk(
@@ -21,12 +24,49 @@ const getAll = createAsyncThunk(
     }
 );
 
+const searchByName = createAsyncThunk(
+    'movieSlice/searchByName',
+    async ({searchName, page}, {rejectWithValue},) => {
+        try {
+            const {data} = await movieService.searchByName(searchName, page)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+)
+
+const getMoviesByGenre = createAsyncThunk(
+    'movieSlice/getMoviesByGenre',
+    async ({genreId, page}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getMoviesByGenre(genreId, page);
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+)
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
     reducers: {
         setCurrentMovieId: (state, action) => {
             state.currentMovieId = action.payload;
+        },
+        setSearchName: (state, action) => {
+            state.searchName = action.payload
+            state.genreId = null
+        },
+        setGenreId: (state, action) => {
+
+            state.genreId = action.payload;
+            state.searchName = null;
+
+        },
+        setGenresNames:(state, action) => {
+            state.genresNames = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -34,7 +74,17 @@ const movieSlice = createSlice({
             .addCase(getAll.fulfilled, (state, action) => {
                 state.errors = null;
                 state.movies = action.payload.results;
-                state.totalPages = action.payload.total_pages
+                state.totalPages = action.payload.total_pages;
+            })
+            .addCase(searchByName.fulfilled, (state, action) => {
+                state.errors = null;
+                state.movies = action.payload.results;
+                state.totalPages = action.payload.total_pages;
+            })
+            .addCase(getMoviesByGenre.fulfilled, (state, action) => {
+                state.errors = null;
+                state.movies = action.payload.results;
+                state.totalPages = action.payload.total_pages;
             })
             .addDefaultCase((state, action) => {
                 const [type] = action.type.split('/').slice(-1);
@@ -47,11 +97,16 @@ const movieSlice = createSlice({
     }
 })
 
-const {reducer: movieReducer, actions: {setCurrentMovieId}} = movieSlice;
+const {reducer: movieReducer, actions: {setCurrentMovieId, setSearchName, setGenreId, setGenresNames}} = movieSlice;
 
 const movieActions = {
     getAll,
-    setCurrentMovieId
+    setCurrentMovieId,
+    searchByName,
+    setSearchName,
+    getMoviesByGenre,
+    setGenreId,
+    setGenresNames
 }
 
 export {

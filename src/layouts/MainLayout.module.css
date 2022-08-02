@@ -1,17 +1,13 @@
 .container {
     display: flex;
-    background: blue;
 }
 
 .menu {
     height: 100%;
-    width: 10%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-
-    background: silver;
 }
 
 .wrap {
@@ -19,7 +15,7 @@
     flex-direction: column;
 
 
-    width: 90%;
+    width: 80%;
     height: 100%;
     background: red;
 }
@@ -37,13 +33,6 @@
     justify-content: center;
     width: 100%;
     background: aqua;
-}
-
-.movie {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background: green;
 }
 
 .headerWrap {

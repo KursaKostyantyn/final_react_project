@@ -1,11 +1,14 @@
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {movieActions} from "../../redux";
 
 import css from './MoviesListCard.module.css'
 import {PosterPreview} from "../posterPreview";
+import {Genre} from "../genre";
 
 const MoviesListCard = ({movie}) => {
+    const {genres} = useSelector(state => state.genres)
+
     const {
         id,
         adult,
@@ -18,7 +21,8 @@ const MoviesListCard = ({movie}) => {
         title,
         video,
         vote_average,
-        vote_count
+        vote_count,
+        genre_ids
     } = movie
 
     const navigate = useNavigate()
@@ -26,8 +30,16 @@ const MoviesListCard = ({movie}) => {
 
     const chosenMovie = () => {
         dispatch(movieActions.setCurrentMovieId(id))
+        dispatch(movieActions.setGenresNames(genresNames))
         navigate(`/${title}`)
 
+    }
+
+    const genresNames = []
+
+    for (let i = 0; i < genre_ids.length; i++) {
+        const genre = genres.find(genre => genre.id === genre_ids[i])
+        genresNames.push(genre)
     }
 
     return (
@@ -37,6 +49,13 @@ const MoviesListCard = ({movie}) => {
                 <div>adult: {adult.toString()}</div>
                 <div>original_language: {original_language}</div>
                 <div>original_title: {original_title}</div>
+                <div className={css.movieListCardGenres}>Genres: {genresNames.map(genre => <Genre key={genre.id}
+                                                                                                  name={genre.name}
+                                                                                                  id={genre.id}
+                                                                                                  someInfo={genre.id}
+                                                                                                  badgeStatus={false}/>)}
+
+                </div>
                 <div>overview: {overview}</div>
                 <div>popularity: {popularity}</div>
                 <div>release_date: {release_date}</div>

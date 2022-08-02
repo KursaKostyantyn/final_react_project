@@ -9,3 +9,6 @@
 .movieInfo {
     margin: 5px;
 }
+.movieInfoGenre {
+    display: flex;
+}
