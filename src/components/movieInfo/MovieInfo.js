@@ -40,8 +40,6 @@ const MovieInfo = () => {
                                                          someInfo={genre.id} badgeStatus={false}/>)}
                     </div>
                 </h6>
-
-
                 <div>overview: {overview}</div>
                 <div>popularity: {popularity}</div>
                 <div>release_date: {release_date}</div>
