@@ -2,6 +2,7 @@ import {Outlet} from "react-router-dom";
 
 import {Genres, Header, Menu, SearchForm, UserInfo} from "../components";
 import css from './MainLayout.module.css'
+import {ThemeSwitcher} from "../components";
 
 const MainLayout = () => {
     return (
@@ -16,8 +17,13 @@ const MainLayout = () => {
                     <div><Genres/></div>
                 </div>
                 <div className={css.wrap}>
-                    <div className={css.genres}>
-                        <SearchForm/>
+                    <div className={css.search}>
+                        <div className={css.searchForm}>
+                            <SearchForm/>
+                        </div>
+                        <div className={css.themeSwitcher}>
+                            <ThemeSwitcher/>
+                        </div>
                     </div>
                     <div className={css.mostPopular}>
                         <Outlet/>

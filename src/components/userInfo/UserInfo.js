@@ -12,7 +12,6 @@ const UserInfo = () => {
                 Kursa
             </div>
         </div>
-
     )
 }
 

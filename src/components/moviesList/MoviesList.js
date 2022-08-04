@@ -5,6 +5,8 @@ import {useSearchParams} from "react-router-dom";
 import {MoviesListCard} from "../moviesListCard";
 import css from './MoviesList.module.css'
 import {movieActions} from "../../redux";
+import {ThemeContext} from "../../App";
+import {DARK_THEME, LIGHT_THEME} from "../../constants";
 
 const MoviesList = () => {
 
@@ -60,9 +62,24 @@ const MoviesList = () => {
             page {query.get('page')} of {totalPages}
             <button className={css.btn} disabled={nextStatus} onClick={next}>next page</button>
 
-            <div className={css.movieList}>
-                {movies.map((movie, index) => <MoviesListCard key={index} movie={movie}/>)}
-            </div>
+            <ThemeContext.Consumer>
+                {
+                    (value) => {
+
+                        if (value.themes === true) {
+                            return <div className={css.movieList} style={LIGHT_THEME}>
+                                {movies.map((movie, index) => <MoviesListCard key={index} movie={movie}/>)}
+                            </div>
+                        }
+
+                        if (value.themes === false) {
+                            return <div className={css.movieList} style={DARK_THEME}>
+                                {movies.map((movie, index) => <MoviesListCard key={index} movie={movie}/>)}
+                            </div>
+                        }
+                    }
+                }
+            </ThemeContext.Consumer>
 
             <button className={css.btn} disabled={prevStatus} onClick={previous}>previous page</button>
             page {query.get('page')} of {totalPages}

@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
+
 import {movieActions} from "../../redux";
+import css from './menu.module.css'
 
 const Menu = () => {
     const dispatch = useDispatch();
@@ -11,9 +13,8 @@ const Menu = () => {
     }
 
     return (
-        <div onClick={setSearchNameNull}>
+        <div onClick={setSearchNameNull} className={css.movies}>
             <Link to={'/movies'}>Movies</Link>
-            <hr/>
         </div>
 
     )
