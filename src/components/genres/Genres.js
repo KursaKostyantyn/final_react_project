@@ -17,7 +17,11 @@ const Genres = () => {
         <div>
             Genres:
             <hr/>
-            {genres.map((genre => <Genre key={genre.id} someInfo={genre.id} name={genre.name} id={genre.id} badgeStatus={true}/>))}
+            {genres.map((genre => <Genre key={genre.id}
+                                         someInfo={genre.id}
+                                         name={genre.name}
+                                         id={genre.id}
+                                         badgeStatus={true}/>))}
         </div>
     )
 }

@@ -14,17 +14,28 @@
     display: flex;
     flex-direction: column;
 
-
     width: 80%;
     height: 100%;
-    background: red;
+
 }
 
-.genres {
+.search {
     display: flex;
     justify-content: center;
     width: 100%;
-    background: yellow;
+    border: 1px solid black;
+}
+
+.searchForm{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+.themeSwitcher{
+    display: flex;
+    justify-content: center;
+    width: 20%;
 }
 
 .mostPopular {
@@ -32,7 +43,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    background: aqua;
+    border: 1px solid black;
 }
 
 .headerWrap {

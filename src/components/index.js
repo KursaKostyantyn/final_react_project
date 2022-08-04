@@ -10,4 +10,4 @@ export * from './genre';
 export * from './starRating';
 export * from './genreBadge';
 export * from './searchForm';
-
+export * from './themeSwitcher';
